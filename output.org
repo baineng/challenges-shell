@@ -14,7 +14,7 @@
 #+PROPERTY: header-args    :results output
 
 * how to echo escape characters?
-#+BEGIN_SRC sh
+#+BEGIN_SRC sh :exports both
 echo "Welcome\t to \tBash"
 #+END_SRC
 
