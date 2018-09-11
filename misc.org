@@ -1,0 +1,44 @@
+#+AUTHOR: Benn Ma
+#+EMAIL: benn.msg@gmail.com
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not LOGBOOK) date:t e:t
+#+OPTIONS: email:nil f:t inline:t p:nil pri:nil stat:t tags:t
+#+OPTIONS: tasks:t tex:t timestamp:t toc:t todo:t |:t
+#+PROPERTY: header-args  :results output
+
+* Challenges of Shell
+** how scope changes after source another file?
+- test1.sh
+#+BEGIN_SRC sh
+#!/bin/sh
+va="va"
+export vb="vb"
+#+END_SRC
+
+- test2.sh
+#+BEGIN_SRC sh
+#!/bin/sh
+. ~/test1.sh
+echo "in test2, va:$va"
+echo "in test2, vb:$vb"
+ta="ta"
+export tb="tb"
+#+END_SRC
+
+- execution file
+#+BEGIN_SRC sh :exports both
+. ~/test2.sh
+echo "va: $va"
+echo "vb: $vb"
+echo "ta: $ta"
+echo "tb: $tb"
+#+END_SRC
+
+#+RESULTS:
+: in test2, va:va
+: in test2, vb:vb
+: va: va
+: vb: vb
+: ta: ta
+: tb: tb
+

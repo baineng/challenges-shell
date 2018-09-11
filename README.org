@@ -1,2 +1,2 @@
-# challenges-shell
+* challenges-shell
 challenges of shell script
