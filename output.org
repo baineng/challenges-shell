@@ -12,7 +12,7 @@
 #+SELECT_TAGS: export
 
 * how to echo escape characters?
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output :exports both :eval yes
 echo "Welcome\t to \tBash"
 #+END_SRC
 
