@@ -10,9 +10,10 @@
 #+KEYWORDS:
 #+LANGUAGE: en
 #+SELECT_TAGS: export
+#+PROPERTY: header-args    :exports both :results output
 
 * how to echo escape characters?
-#+BEGIN_SRC sh :results output :exports both :eval yes
+#+BEGIN_SRC sh
 echo "Welcome\t to \tBash"
 #+END_SRC
 
