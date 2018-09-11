@@ -10,7 +10,8 @@
 #+KEYWORDS:
 #+LANGUAGE: en
 #+SELECT_TAGS: export
-#+PROPERTY: header-args    :exports both :results output
+#+PROPERTY: header-args    :exports both
+#+PROPERTY: header-args    :results output
 
 * how to echo escape characters?
 #+BEGIN_SRC sh
