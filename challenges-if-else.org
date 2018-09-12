@@ -1,0 +1,189 @@
+#+AUTHOR: Benn Ma
+#+EMAIL: benn.msg@gmail.com
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not LOGBOOK) date:t e:t
+#+OPTIONS: email:nil f:t inline:t p:nil pri:nil stat:t tags:t
+#+OPTIONS: tasks:t tex:t timestamp:t toc:t todo:t |:t
+#+PROPERTY: header-args  :results output
+
+* Challenges of If-Else
+
+if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi
+refs: https://linux.die.net/Bash-Beginners-Guide/sect_07_01.html
+
+** String Comparison
+
+| String Comparison | Description                               |
+|-------------------+-------------------------------------------|
+| Str1 = Str2       | Returns true if the strings are equal     |
+| Str1 != Str2      | Returns true if the strings are not equal |
+| -n Str1           | Returns true if the string is not null    |
+| -z Str1           | Returns true if the string is null        | 
+  
+#+BEGIN_SRC sh
+if [ 'a' = 'a' ]
+then
+    echo "1. a = a"
+fi
+
+if [ 'a' = 'b' ]
+then
+    echo "a = b"
+else
+    echo "2. a != b"
+fi
+
+if [ 'a' != 'b' ]; then
+    echo '3. a != b'
+fi
+
+str1="something"
+if [ -n $str1  ]; then
+    echo '4. str1 is not null'
+fi
+
+if [ -z $str2  ]; then
+    echo '5. str2 is null'
+fi
+#+END_SRC
+
+#+RESULTS:
+: 1. a = a
+: 2. a != b
+: 3. a != b
+: 4. str1 is not null
+: 5. str2 is null
+
+** Numeric Comparison
+
+| Numeric Comparison | Description                                             |
+|--------------------+---------------------------------------------------------|
+| expr1 -eq expr2    | Returns true if the expressions are equal               |
+| expr1 -ne expr2    | Returns true if the expressions are not equal           |
+| expr1 -gt expr2    | Returns true if expr1 is greater than expr2             |
+| expr1 -ge expr2    | Returns true if expr1 is greater than or equal to expr2 |
+| expr1 -lt expr2    | Returns true if expr1 is less than expr2                |
+| expr1 -le expr2    | Returns true if expr1 is less than or equal to expr2    |
+| ! expr1            | Negates the result of the expression                    |
+
+#+BEGIN_SRC sh
+if [ 1 -eq 1 ]; then
+    echo '1 = 1'
+fi
+
+if [ 1 -ne 2 ]; then
+    echo '1 != 2'
+fi
+
+if [ 2 -gt 1 ]; then
+    echo '2 > 1'
+fi
+
+if [ 2 -ge 2 ]; then
+    echo '2 >= 2'
+fi
+
+if [ 2 -lt 3 ]; then
+    echo '2 < 3'
+fi
+
+if [ 2 -le 2 ]; then
+    echo '2 <= 2'
+fi
+
+if [ ! 2 -lt 1 ]; then
+    echo '2 is not < 1'
+fi
+#+END_SRC
+
+#+RESULTS:
+: 1 = 1
+: 1 != 2
+: 2 > 1
+: 2 >= 2
+: 2 < 3
+: 2 <= 2
+: 2 is not < 1
+
+** File Conditionals
+
+| File Conditionals | Description                                                                                      |
+|-------------------+--------------------------------------------------------------------------------------------------|
+| -d file           | True if the file is a directory                                                                  |
+| -e file           | True if the file exists (note that this is not particularly portable, thus -f is generally used) |
+| -f file           | True if the provided string is a file                                                            |
+| -g file           | True if the group id is set on a file                                                            |
+| -r file           | True if the file is readable                                                                     |
+| -s file           | True if the file has a non-zero size                                                             |
+| -u                | True if the user id is set on a file                                                             |
+| -w                | True if the file is writable                                                                     |
+| -x                | True if the file is an executable                                                                |
+
+- first let's check what we have in home dir
+#+BEGIN_SRC sh
+ls ~
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+Documents
+Downloads
+Sources
+test.sh
+test2.sh
+#+end_example
+
+- then let's test the conditions
+#+BEGIN_SRC sh
+if [ -d ~ ]; then
+    echo '~ is a dir'
+fi
+
+if [ ! -d ~/test.sh ]; then # this is false
+    echo '~/test.sh is not a dir' 
+fi
+
+if [ -e ~/test2.sh ]; then
+    echo '~/test2.sh exists.'
+fi
+
+if [ -f ~/test2.sh ]; then
+    echo '~/test2.sh exists and is a file'
+fi
+
+if [ ! -g ~/test2.sh ]; then
+    echo '~/test2.sh is not owned by my groups.'
+fi
+
+if [ -r ~/test.sh ]; then
+    echo '~/test.sh is readable'
+fi
+
+if [ -w ~/test.sh ]; then
+    echo '~/test.sh is writable as well'
+fi
+
+if [ ! -x ~/test.sh ]; then
+    echo '~/test.sh is not executable'
+fi
+
+if [ -s ~/test.sh ]; then
+    echo "size of ~/test.sh is bigger then zero "
+fi
+
+if [ -u ~/test.sh ]; then
+    echo '~/test.sh owned by me'
+fi
+#+END_SRC
+
+#+RESULTS:
+: ~ is a dir
+: ~/test.sh is not a dir
+: ~/test2.sh exists.
+: ~/test2.sh exists and is a file
+: ~/test2.sh is not owned by my groups.
+: ~/test.sh is readable
+: ~/test.sh is writable as well
+: ~/test.sh is not executable
+: size of ~/test.sh is bigger then zero 
+

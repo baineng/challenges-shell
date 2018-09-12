@@ -6,7 +6,7 @@
 #+OPTIONS: tasks:t tex:t timestamp:t toc:t todo:t |:t
 #+PROPERTY: header-args  :results output
 
-* Challenges of Shell
+* Challenges of Misc
 ** how scope changes after source another file?
 - test1.sh
 #+BEGIN_SRC sh
