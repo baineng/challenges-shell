@@ -6,17 +6,27 @@
 #+OPTIONS: tasks:t tex:t timestamp:t toc:t todo:t |:t
 #+PROPERTY: header-args  :results output
 
-* Challenges of If-Else
-
-if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi
-
-ref: https://linux.die.net/Bash-Beginners-Guide/sect_07_01.html
-
-** Table of content                                                     :TOC:
+* Table of content                                                       :TOC:
 - [[#challenges-of-if-else][Challenges of If-Else]]
   - [[#string-comparison][String Comparison]]
   - [[#numeric-comparison][Numeric Comparison]]
   - [[#file-conditionals][File Conditionals]]
+
+* Challenges of If-Else
+
+- structure:
+
+#+BEGIN_QUOTE
+if TEST-COMMANDS; then 
+    CONSEQUENT-COMMANDS; 
+elif  TEST-COMMANDS; then 
+    ALTERNATIVE-COMMANDS
+else
+    ELSE-COMMANDS 
+fi
+#+END_QUOTE
+
+ref: https://linux.die.net/Bash-Beginners-Guide/sect_07_01.html
 
 ** String Comparison
 
