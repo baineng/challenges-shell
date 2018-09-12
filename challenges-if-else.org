@@ -9,7 +9,14 @@
 * Challenges of If-Else
 
 if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi
-refs: https://linux.die.net/Bash-Beginners-Guide/sect_07_01.html
+
+ref: https://linux.die.net/Bash-Beginners-Guide/sect_07_01.html
+
+** Table of content                                                     :TOC:
+- [[#challenges-of-if-else][Challenges of If-Else]]
+  - [[#string-comparison][String Comparison]]
+  - [[#numeric-comparison][Numeric Comparison]]
+  - [[#file-conditionals][File Conditionals]]
 
 ** String Comparison
 
@@ -20,7 +27,7 @@ refs: https://linux.die.net/Bash-Beginners-Guide/sect_07_01.html
 | -n Str1           | Returns true if the string is not null    |
 | -z Str1           | Returns true if the string is null        | 
   
-#+BEGIN_SRC sh
+#+BEGIN_SRC sh  :exports both
 if [ 'a' = 'a' ]
 then
     echo "1. a = a"
@@ -66,7 +73,7 @@ fi
 | expr1 -le expr2    | Returns true if expr1 is less than or equal to expr2    |
 | ! expr1            | Negates the result of the expression                    |
 
-#+BEGIN_SRC sh
+#+BEGIN_SRC sh  :exports both
 if [ 1 -eq 1 ]; then
     echo '1 = 1'
 fi
@@ -134,7 +141,7 @@ test2.sh
 #+end_example
 
 - then let's test the conditions
-#+BEGIN_SRC sh
+#+BEGIN_SRC sh  :exports both
 if [ -d ~ ]; then
     echo '~ is a dir'
 fi
