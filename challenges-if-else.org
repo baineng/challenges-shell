@@ -6,7 +6,7 @@
 #+OPTIONS: tasks:t tex:t timestamp:t toc:t todo:t |:t
 #+PROPERTY: header-args  :results output
 
-* Table of content                                                       :TOC:
+* Table of Content                                                       :TOC:
 - [[#challenges-of-if-else][Challenges of If-Else]]
   - [[#string-comparison][String Comparison]]
   - [[#numeric-comparison][Numeric Comparison]]
@@ -16,7 +16,7 @@
 
 - structure:
 
-#+BEGIN_QUOTE
+#+BEGIN_EXAMPLE
 if TEST-COMMANDS; then 
     CONSEQUENT-COMMANDS; 
 elif  TEST-COMMANDS; then 
@@ -24,7 +24,11 @@ elif  TEST-COMMANDS; then
 else
     ELSE-COMMANDS 
 fi
-#+END_QUOTE
+#+END_EXAMPLE
+
+#+BEGIN_NOTES
+The TEST-COMMAND list is executed, and if its return status is zero, the CONSEQUENT-COMMANDS list is executed. The return status is the exit status of the last command executed, or zero if no condition tested true.
+#+END_NOTES
 
 ref: https://linux.die.net/Bash-Beginners-Guide/sect_07_01.html
 
