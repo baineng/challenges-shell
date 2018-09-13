@@ -6,6 +6,11 @@
 #+OPTIONS: tasks:t tex:t timestamp:t toc:t todo:t |:t
 #+PROPERTY: header-args  :results output
 
+* Talbe of Content                                                       :TOC:
+- [[#challenges-of-misc][Challenges of Misc]]
+  - [[#how-scope-changes-after-source-another-file][how scope changes after source another file?]]
+  - [[#difference-between--and-----and--------][Difference between $() and ` `, ${}, $[] and $(()), [ ] (( )) [\[  \]]]]
+
 * Challenges of Misc
 ** how scope changes after source another file?
 - test1.sh
@@ -42,3 +47,36 @@ echo "tb: $tb"
 : ta: ta
 : tb: tb
 
+** Difference between $() and ` `, ${}, $[] and $(()), [ ] (( )) [\[  \]]
+*** $() vs ``
+they are both using for command substitution
+
+- `` is more compatible, but can not be used in double quotes.
+- $() is not compitibility for all shells.
+
+#+BEGIN_SRC sh
+echo $(uname -r)
+echo `uname -r`
+echo "uname -r: $(uname -r)"
+#+END_SRC
+
+#+RESULTS:
+: 17.4.0
+: 17.4.0
+: uname -r: 17.4.0
+
+*** ${}
+
+- no difference between $var and ${var}
+
+#+BEGIN_SRC sh
+A='X'
+echo $AB
+echo ${A}B
+#+END_SRC
+
+#+RESULTS:
+: 
+: XB
+
+- there are other usage of ${}
